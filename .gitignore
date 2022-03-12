@@ -1,0 +1,9 @@
+.DS_Store
+dist
+build/*
+!build/installer.nsh
+node_modules
+*.log
+thumbs.db
+.en
+
