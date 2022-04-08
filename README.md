@@ -1,8 +1,13 @@
-# vue-electron-display
+# vue-electron-display   
+
+Combines Vue 3.2 with Electron 16   
+includes Vuex and Vue Router   
+
+This is a basic working project that can be used as a template for other projects combining Vue with Electron  
 
 
-Working with Vue and Electron together to create a sort of display. 
-
+Credit to SimulatedGREG for many pieces I found in his project electron-vue:   
+https://github.com/SimulatedGREG/electron-vue   
 
 
 #### Usage:
@@ -18,4 +23,4 @@ npm run dev
 npm run build
 
 
-`
+```

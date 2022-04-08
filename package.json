@@ -15,7 +15,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "My Display",
+    "productName": "Vue Electron Display",
     "appId": "com.hjelmfelt.mydisplay",
     "directories": {
       "output": "build"

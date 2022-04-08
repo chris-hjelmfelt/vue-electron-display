@@ -158,9 +158,7 @@ if (process.env.NODE_ENV === 'production') {
         {
           from: path.join(__dirname, '../static'),
           to: path.join(__dirname, '../dist/electron/static'),
-          globOptions: {
-            ignore: ['.*']
-          }
+          noErrorOnMissing: true
         }
       ],
       options: {  

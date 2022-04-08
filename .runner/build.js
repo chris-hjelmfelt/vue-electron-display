@@ -5,17 +5,14 @@ process.env.NODE_ENV = 'production'
 
 const chalk = require('chalk')
 const del = require('del')
-//const { spawn } = require('child_process')
 const webpack = require('webpack')
 const Listr = require('listr')
 
-const mainConfig = require('./webpack.main.config')
-const rendererConfig = require('./webpack.renderer.config')
+const mainConfig = require('./main.webpack.config')
+const rendererConfig = require('./renderer.webpack.config')
 
 const doneLog = chalk.bgGreen.white(' DONE ') + ' '
 const errorLog = chalk.bgRed.white(' ERROR ') + ' '
-const okayLog = chalk.bgBlue.white(' OKAY ') + ' '
-//const isCI = process.env.CI || false
 
 if (process.env.BUILD_TARGET === 'clean') clean()
 else build()
@@ -27,7 +24,7 @@ function clean () {
 }
 
 async function build () {
-  console.log(chalk.yellow.bold('\n -- Hello from Build -- \n'))
+  console.log(chalk.yellow.bold('\n -- Starting Build -- \n'))
 
   del.sync(['dist/electron/*', '!.gitkeep'])
 
@@ -69,7 +66,7 @@ async function build () {
     .run()
     .then(() => {      
       console.log(`\n\n${results}`)
-      console.log(`${okayLog}take it away ${chalk.yellow('`electron-builder`')}\n`)
+      console.log(`-- ${chalk.yellow('electron-builder')} --\n`)
       process.exit()
     })
     .catch(err => {

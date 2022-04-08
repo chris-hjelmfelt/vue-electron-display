@@ -1,5 +1,5 @@
 
-import { app, Menu, BrowserWindow } from 'electron'
+import { app, Menu, BrowserWindow, ipcMain } from 'electron'
 
 if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
@@ -12,8 +12,8 @@ function createMainWindow () {
     show: false,  // wait till everything is ready 
     backgroundColor: '#FFFFFF',  // should match App background
     useContentSize: true,  // window borders are not included in size
-    height: 800,
-    width: 1400,    
+    height: 700,
+    width: 1200,    
     webPreferences: {  
       // Check this out -->  https://www.electronjs.org/docs/latest/tutorial/security
       nodeIntegration: true, 
@@ -29,7 +29,7 @@ function createMainWindow () {
 
   mainWindow.loadURL(mainURL)
 
-  mainWindow.on('closed', () => {
+  mainWindow.on('close', () => {
     app.quit()
   })
 
@@ -49,7 +49,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   if (mainWindow === null) {
     createMainWindow()
-  }
+  }    
 })
 
 
@@ -86,4 +86,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
+ipcMain.on('ping', (event) => {
+  event.sender.send('greet', 'Hello from Main Process')
+})
 
