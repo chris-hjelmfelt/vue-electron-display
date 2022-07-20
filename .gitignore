@@ -6,4 +6,4 @@ node_modules
 *.log
 thumbs.db
 .en
-
+config.json
